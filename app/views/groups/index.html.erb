@@ -14,8 +14,8 @@
       <td><%= h group.created_at.strftime("%d %B %y") %></td>
       <td><%= link_to (h group.founder.username), group.founder %></td>
       <td>
+        <%= link_to 'Edit', edit_group_path(group) %>
         <% if group.id != Group::ADMINS %>
-          <%= link_to 'Edit', edit_group_path(group) %>
           <%= link_to 'Destroy', group, :confirm => 'Are you sure?', :method => :delete %>
         <% end %>
       </td>
