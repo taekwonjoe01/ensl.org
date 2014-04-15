@@ -42,7 +42,9 @@ class GroupsController < ApplicationController
 
   def destroy
     raise AccessError unless @group.can_destroy? cuser
-    @group.destroy
+    if @group.id != Group::ADMINS
+      @group.destroy
+    end
     redirect_to groups_url
   end
 
