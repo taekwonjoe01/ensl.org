@@ -275,6 +275,6 @@ class User < ActiveRecord::Base
   end
 
   def self.search(search)
-    search ? where('username LIKE ?', "%#{search}%") : scoped
+    search ? where("LOWER(username) LIKE LOWER(?) OR steamid LIKE ?", "%#{search}%", "%#{search}%") : scoped
   end
 end

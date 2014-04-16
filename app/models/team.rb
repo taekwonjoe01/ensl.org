@@ -116,4 +116,8 @@ class Team < ActiveRecord::Base
   def can_destroy? cuser
     cuser and cuser.admin?
   end
+
+  def self.search(search)
+    search ? where("LOWER(name) LIKE LOWER(?)", "%#{search}%") : scoped
+  end
 end
