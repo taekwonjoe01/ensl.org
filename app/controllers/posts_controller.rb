@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         flash[:notice] = t(:posts_create)
-        format.js  { render }
+        format.html { return_to }
       else
         flash[:error] = t(:posts_invalid) + @post.errors.full_messages.to_s
         format.html { return_to }
